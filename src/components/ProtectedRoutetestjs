@@ -1,0 +1,54 @@
+// import { Navigate } from "react-router-dom";
+// import { ACCESS_TOKEN,REFRESH_TOKEN } from "../constants";
+// import {api} from '../api';
+// import { useEffect, useState } from "react";
+// import { jwtDecode } from "jwt-decode";
+
+// function ProtectedRoute({children}){
+//         const [authenticated,setIsAuthenticated]=useState(null)
+
+//         useEffect(()=>{
+//             authfunction().catch(()=>setIsAuthenticated(false));
+//         },[])
+
+//         const refreshtokenfun=async()=>{
+//             try{
+//                 const refreshtoken=localStorage.getItem(REFRESH_TOKEN)
+//                 const res= await api.post('/api/refresh/token',{refresh:refreshtoken});
+//                 if (res.status==200){
+//                     localStorage.setItem(ACCESS_TOKEN,res.data.access)
+//                     setIsAuthenticated(true)
+//                 }
+//                 else{
+//                     setIsAuthenticated(false)
+//                 }
+//             }catch(error){
+//                 console.log(error)
+//                 setIsAuthenticated(false)
+//             }
+//         }
+
+
+//         const authfunction=async()=>{
+//             const token=localStorage.getItem(ACCESS_TOKEN)
+//             if(!token){
+//                 console.log("No token")
+//                 setIsAuthenticated(false)
+//                 return false
+//             }
+//             else{
+//                 const decode=jwtDecode(token)
+//                 const expiration=decode.exp
+//                 const now=Date.now()/1000
+
+//                 if (expiration<now){
+//                     console.log("token expired")
+//                     await refreshtokenfun()
+//                 }
+//                 else{
+//                     setIsAuthenticated(true)
+//                 }
+//             }
+//         }
+
+// }
